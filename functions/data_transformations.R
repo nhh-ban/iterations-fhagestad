@@ -22,4 +22,34 @@ unlist_safe <-
       unnest_wider(latLon)
     
     return(df) 
-    }   
+  }   
+
+# Problem 4 
+# - - - - - - - - - - - -
+# Time period function
+to_iso8601 <- function(datetime, offset_days) {
+  
+datetime_var <- anytime(datetime)
+   
+# Offset measured in days
+adjusted_datetime <- datetime_var + days(offset_days)
+   
+# Formatting with Z to indicate time zone "UTC"
+iso8601_z <- format(adjusted_datetime, 
+                    format = "%Y-%m-%dT%H:%M:%SZ",
+                    tz = "UTC")
+return(iso8601_z)
+ }
+ 
+# Test the time function
+to_iso8601(as_datetime("2016-09-01 10:11:12"), 0)   
+ 
+ 
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
