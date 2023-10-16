@@ -5,6 +5,7 @@
 # All tests are packed in a function test_stations_metadata that apples
 # all the aforementioned tests
 
+# Function that checks if the columns match the column names in the vector
 test_stations_metadata_colnames <-
   function(df) {
     
@@ -17,6 +18,7 @@ test_stations_metadata_colnames <-
     }
   }
 
+# Function that checks the number of rows in the dataframe and if they are reasonable
 test_stations_metadata_nrows <-
   function(df) {
     
@@ -32,6 +34,7 @@ test_stations_metadata_nrows <-
     }
   }
 
+# Function that checks if the columns in the dataframe hva the expected data types
 test_stations_metadata_coltypes <-
   function(df) {
     expected_coltypes <-
@@ -45,6 +48,7 @@ test_stations_metadata_coltypes <-
     }
   }
   
+# Function that assesses the amounts of missing values
 test_stations_metadata_nmissing <-
   function(df) {
     max_miss_vals <- 200
@@ -56,6 +60,7 @@ test_stations_metadata_nmissing <-
     }
   }
 
+# Function to check if the dataframe uses the "UTC" time zone
 test_stations_metadata_latestdata_timezone <-
   function(df) {
     
@@ -66,7 +71,7 @@ test_stations_metadata_latestdata_timezone <-
     }
   }
 
-
+# Summary functions
 test_stations_metadata <- 
   function(df){
     test_stations_metadata_colnames(df)
