@@ -65,5 +65,40 @@ stations_metadata_df %>%
   theme_classic()
 
 
+### 6: Making a plot prettier
+
+# Firstly I have to select station
+
+select_station <- stations_metadata_df %>%
+  filter(latestData > Sys.Date()- days(x = 7)) %>% 
+  sample_n(1)
+
+# Then get the name of the station
+
+station_name <- select_station$name
+
+# Get the volume data:
+
+volume_data <- vol_qry(id = selected_station$id,
+                       from = to_iso8601(selected_station$latestData, -4),
+                       to = to_iso8601(selected_station$latestData, 0))
+
+# Then the plot
+
+volume_data %>%
+  QL(., .url = configs$vegvesen_url) %>%
+  transform_volumes() %>% 
+  ggplot(aes(x=from, y=volume)) + 
+  geom_line() + 
+  xlab("Date") +
+  ylab("Volume") +
+  ggtitle("Traffic Volume") +
+  theme_classic()
+
+
+
+
+
+
 
 
